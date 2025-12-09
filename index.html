@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Desplegable</title>
+    <style>
+        @font-face {
+            font-family: 'Cherolina';
+            src: url(Cherolina.ttf);
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .envelope {
+            position: relative;
+            width: 750px;
+            height: 600px;
+            background: #dfc786;
+            border-radius: 8px 8px 0 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: #d1ab6b;
+            transform: skewY(-5deg);
+            transform-origin: bottom;
+            transition: transform 0.3s ease;
+        }
+        .envelope.open::before {
+            transform: skewY(-45deg);
+        }
+        .letter {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 0;
+            background: url(https://i.imgur.com/BdKdd95.png);
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+            transition: height 0.3s ease;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            font-size: 16px;
+            padding: 20px;
+        }
+        .envelope.open .letter {
+            height: 500px;
+        }
+        .letter-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            overflow: auto;
+            width: 430px;
+            height: 230px;
+            margin-top: 140px;
+            margin-left: 240px;
+            font-family: times;
+        }
+        .envelope.open .letter-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="envelope" id="envelope">
+        <div class="letter">
+            <div class="letter-content">¡Querido Rey Insecto! En las últimas navidades la pasé sola en el hormiguero, Mukade estaba ocupado y los ancianos se reunieron con sus parientes más cercanos.<br><br>
+
+Si debo pedir algo para este año, es poder disfrutar de estas fechas con mi familia y pese a que en este dibujo soso he representado a mi equipo ninja, hace tiempo que les considero como algo más importante en mi vida <del>sobre todo ya sabes...</del><br><br>
+
+Me gustaría no estar muy ocupada y celebrar una agradable cena de Navidad, llenarle el cabello a Renjiro de luciérnagas navideñas, comer de los platos que le preparen a Akane y resguardarme bajo el calor de la chimenea que prepare Rain, porque a veces con poco, ya somos muy felices.
+                <br><div align='right' style="font-family: Cherolina; font-size: 40px">Firmado <i>Kyori</i></div>
+                
+                <div style="background-color: #d0b391; border-radius: 8px; padding: 10px; font-family: calibri;"><b>[!] Enlace al dibujo:</b> <a href="https://i.imgur.com/tIvhRSS.png">Pincha aquí! ♡</a></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const envelope = document.getElementById('envelope');
+
+        envelope.addEventListener('click', () => {
+            envelope.classList.toggle('open');
+        });
+    </script>
+</body>
+</html>
